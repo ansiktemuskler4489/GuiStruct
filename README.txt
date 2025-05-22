@@ -51,8 +51,8 @@ gui1.child0 could more easly control gui0 by
 doing screen0.gui0.
 
 Now the centralize event has some limits
-	1. the event sends folloing as argument, (screen0: ScreenGui, gui0: GuiObject, iO, InputObject?)
-	but the gui0 will only send the roblox instance and no the extended wrappers around the GuiObject.
+	1. the event sends following as argument, (screen0: ScreenGui, gui0: GuiObject, iO, InputObject?)
+	but the gui0 will only send the roblox instance and without the extended wrappers around the GuiObject.
 	Could be solved with GoodSignal maybe.
 
 	2. no being able to chose/add multiable centralized event spots.
