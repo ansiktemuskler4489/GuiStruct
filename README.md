@@ -68,6 +68,6 @@ the remote folder or if you wanna change it
 pass in a remotevent when calling the remote
 
 TODO:
-\tAdd more feature
-\tbetter tween event
-\tSearch utility etc
+Add more feature
+better tween event
+Search utility etc
