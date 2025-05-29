@@ -1,4 +1,3 @@
-
 Author: discord@anders3607
 
 this a framework for gui.
@@ -28,15 +27,15 @@ consider following senario:
 
 luau table:
 {
-	screen0 = {
-		gui0 = {
-			child0,
-			child1
-		},
-		gui1 = {
-			child1
-		}
-	}
+\tscreen0 = {
+\t\tgui0 = {
+\t\t\tchild0,
+\t\t\tchild1
+\t\t},
+\t\tgui1 = {
+\t\t\tchild1
+\t\t}
+\t}
 }
 
 
@@ -48,13 +47,13 @@ gui1.child0 could more easly control gui0 by
 doing screen0.gui0.
 
 Now the centralize event has some limits
-	1. the event sends following as argument, (screen0: ScreenGui, gui0: GuiObject, iO, InputObject?)
-	but the gui0 will only send the roblox instance and without the extended wrappers around the GuiObject.
-	Could be solved with GoodSignal maybe.
+\t1. the event sends following as argument, (screen0: ScreenGui, gui0: GuiObject, iO, InputObject?)
+\tbut the gui0 will only send the roblox instance and without the extended wrappers around the GuiObject.
+\tCould be solved with GoodSignal maybe.
 
-	2. no being able to chose/add multiable centralized event spots.
-	if you consider a deeper and bigger gui datamodel it will be a problem to
-	always start from screen0. So being able to set a event spot could help.
+\t2. no being able to chose/add multiable centralized event spots.
+\tif you consider a deeper and bigger gui datamodel it will be a problem to
+\talways start from screen0. So being able to set a event spot could help.
 
 
 lastly to make your life eaiser i have implemented
@@ -70,6 +69,6 @@ the remote folder or if you wanna change it
 pass in a remotevent when calling the remote
 
 TODO:
-	Add more feature
-	better tween event
-	Search utility etc
+\tAdd more feature
+\tbetter tween event
+\tSearch utility etc
