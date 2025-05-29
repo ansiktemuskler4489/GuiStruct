@@ -38,10 +38,7 @@ luau table:
 		}
 	}
 }
-illustration:
-screen0 -->	gui0 --> child0
-                 --> child1
-            gui1 --> child0
+
 
 (mind both is also structured like in the datamodel, but if wanted
 you could change it)
