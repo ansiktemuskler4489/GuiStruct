@@ -96,7 +96,7 @@ function Guis.GetTree(GuiObject:GuiObject, Event:BindableEvent?, Map:Map?, Exclu
 	end
 
 	debug.profilebegin("BuildingGuiTree")
-    local Tree = {
+	local Tree = {
         [GuiObject.Name] = Guis.BuildTree(GuiObject, Event, Map or DEFAULT_MAP, Exclude or UIs)
     }
 	debug.profileend()

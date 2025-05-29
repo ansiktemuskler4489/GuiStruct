@@ -7,7 +7,7 @@ local FrameBase = require(script.Parent.Base.FrameBase)
 local SChandler = setmetatable({}, FrameBase)
 SChandler.__index = SChandler
 
-export type StructFn = (TGhandler:TGhandler)->(FrameBase.GuiBase)
+export type StructFn = (TGhandler:FrameBase.FrameBase)->(FrameBase.GuiBase)
 
 export type SChandler = typeof(setmetatable(
 	{}::{

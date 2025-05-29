@@ -23,7 +23,7 @@ function GuiBase.new(GuiObject:GuiObject, BinableEvent:BindableEvent?):GuiBase
 	return self
 end
 
-function GuiBase:SetEvent(SignalName:string, Name:string?, Fn:(self)->nil?, BinableEvent:BindableEvent?)
+function GuiBase:SetEvent(SignalName:string, Name:string?, Fn:(any)->nil?, BinableEvent:BindableEvent?)
 	local BinableEvent = assert(BinableEvent or self.Event, "no binable founded")
 	local Signal = assert(self.GuiObject[SignalName], "no signal founded")
 	local Connection = Signal:Connect(function(input:InputObject)
