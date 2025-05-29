@@ -2,7 +2,7 @@ local GuiSetup = {}
 
 local TweenService = game:GetService("TweenService")
 
-local Guis =  require()
+local Guis =  require(<<Guis>>)
 local GuiStructs = Guis.Structs
 local Event = Guis.GetDefaultEvent()
 GuiSetup.Event = Event
