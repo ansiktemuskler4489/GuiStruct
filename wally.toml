@@ -1,10 +1,12 @@
 [package]
 name = "ansiktemuskler4489/guistruct"
-version = "0.1.0"
+version = "0.1.2"
 license = "MIT"
 author = "ansiktemuskler4489"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"
 repository = "https://github.com/ansiktemuskler4489/GuiStruct"
+
+description = "This packet offers wrappers around guiobjects, please refer to the repository"
 
 [dependencies]
