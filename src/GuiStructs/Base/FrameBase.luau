@@ -1,3 +1,8 @@
+--[[
+	FrameBase
+
+	Gives primitive wrappers around the frameguiobject
+]]
 local GuiBase = require(script.Parent.GuiBase)
 local FrameBase = setmetatable({}, GuiBase)
 FrameBase.__index = FrameBase
@@ -55,20 +60,5 @@ function FrameBase:RemoveChildren(GuiBase:GuiBase)
 	table.remove(self.Children, index)
 	GuiBase:Destroy()
 end
-
---[[
--- use rawset when needed
-FrameBase.__newindex = function(t, k, v)
-	if not(type(k) == "string") then
-		warn("can't add have other then string type as key")
-	end
-	if k == "__index" or "__type" then
-		rawset(t, k, v)
-		return
-	end
-	t:AddChildren(v)
-	return
-end
-]]
 
 return FrameBase

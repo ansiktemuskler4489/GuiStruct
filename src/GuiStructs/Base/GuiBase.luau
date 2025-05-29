@@ -1,3 +1,8 @@
+--[[
+	GuiBase
+
+	Gives primitive wrappers around the guiobject
+]]
 local GuiBase = {}
 GuiBase.__index = GuiBase
 GuiBase.__type = "GuiBase"

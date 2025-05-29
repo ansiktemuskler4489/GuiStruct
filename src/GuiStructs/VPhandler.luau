@@ -1,3 +1,8 @@
+--[[
+	VPhandler : ViewportHandler, ViewportFrameHandler
+
+	Gives some basic functionallies for ViewportFrame
+]]
 local GIhandler = require(script.Parent.GIhandler)
 local VPhandler = setmetatable({}, GIhandler)
 VPhandler.__index = VPhandler

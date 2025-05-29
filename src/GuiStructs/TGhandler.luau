@@ -1,3 +1,9 @@
+--[[
+	TGhandler : ToggleHandler, ToggleFrameHandler
+
+	Gives basic functionallites for toggling between
+	mulitple guis/frames
+]]
 local FrameBase = require(script.Parent.Base.FrameBase)
 local TGhandler = setmetatable({}, FrameBase)
 TGhandler.__index = TGhandler

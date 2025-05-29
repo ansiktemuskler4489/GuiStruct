@@ -1,3 +1,7 @@
+--[[
+    TBhandler: TextBox Handler
+    
+]]
 local GuiBase = require(script.Parent.Base.GuiBase)
 local TBhandler = setmetatable({}, GuiBase)
 TBhandler.__index = TBhandler

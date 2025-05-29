@@ -1,3 +1,9 @@
+--[[
+	Screen : ScreenGui
+
+	Is usually the root of the gui tree and have the
+	ability to have a "event spot"
+]]
 local FrameBase = require(script.Parent.Base.FrameBase)
 local Screen = setmetatable({}, FrameBase)
 Screen.__index = Screen

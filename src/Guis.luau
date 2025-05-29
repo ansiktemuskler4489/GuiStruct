@@ -1,3 +1,8 @@
+--[[
+	Gives the ability to get types and all of the guistructs
+	It also have a recursive function to build up your gui data model to
+	luau tables
+]]
 local Guis = {}
 
 local GuiStructFolder = script.Parent.GuiStructs
@@ -38,7 +43,7 @@ local Structs = {
 table.freeze(Structs)
 Guis["Structs"] = Structs
 
--- MIND: mapping will also have characteristics of chain
+
 export type Map = {
 	Mapping : {[string] : GuiBase},
 	Default : GuiBase
@@ -71,9 +76,7 @@ local function IsInIsAIsName(Targetvalue:Instance, Table:{Instance}):boolean
 	return false
 end
 
---[[
-	-- MIND: mapping will also have characteristics of chain "filter"
-]]
+
 local function GetClass(GuiObject:Instance, Event:BindableEvent, Map:Map):GuiBase
 	if not GuiObject:IsA("GuiBase") then
 		return nil
@@ -141,26 +144,5 @@ function Guis.GetDefaultEvent(Name:string?)
     return Event
 end
 
---[[
-
-for _, guistruct:ModuleScript in GuiStructFolder:GetChildren() do
-    if not(guistruct:IsA("ModuleScript")) then
-        continue
-    end
-    local module = require(guistruct)
-    Guis[guistruct.Name] = module
-end
-
-for _, base:ModuleScript in GuiStructFolder.Base:GetChildren() do
-    if not(base:IsA("ModuleScript")) then
-        continue
-    end
-    local module = require(base)
-    Guis[base.Name] = module
-end
-
-table.freeze(Guis)
-
-]]
 
 return Guis

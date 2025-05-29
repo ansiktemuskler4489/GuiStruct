@@ -1,4 +1,6 @@
 --[[
+	GIHandler : GuiHandler
+	
 	this was supposed to be the heavyer version of the GuiBase,
 	Cause Some dont need to save alot
 	And some just used as primitive 
@@ -6,10 +8,6 @@
 local GuiBase = require(script.Parent.Base.GuiBase)
 local GIHandler = setmetatable({}, GuiBase)
 GIHandler.__index = GIHandler
-
---local ReplicatedStorage = game:GetService("ReplicatedStorage")
---local GuiRemote = ReplicatedStorage.Remotes.GuiRemote
---local GuiFunction = ReplicatedStorage.Remotes.GuiFunction
 
 export type GuiPacket = {
 	["action"]:string,
@@ -20,7 +18,7 @@ export type GuiPacket = {
 
 export type Tweens = {
 	[string]:{
-		["Tween"]:Tween|string, 
+		["Tween"]:Tween|string,
 		["EventName"]:string
 	}
 }
@@ -30,7 +28,9 @@ export type GuiBase = GuiBase.GuiBase
 export type GIHandler = typeof(setmetatable(
 	{}::{
 		Tweens:{[string]:Tween},
-		Data:{[string]:any}
+		Data:{[string]:any},
+		RemoteFunction : RemoteFunction?,
+		RemoteEvent : RemoteEvent?
 	}, GIHandler)) & GuiBase.GuiBase
 
 function GIHandler.new(
@@ -38,72 +38,46 @@ function GIHandler.new(
 	BinableEvent:BindableEvent
 )
 	local self = setmetatable(GuiBase.new(
-		GuiObject, 
-		BinableEvent 
+		GuiObject,
+		BinableEvent
 		), GIHandler)
 	
 	self.Tweens = {}
 	self.Data = {}
+
+	self.RemoteEvent = nil
+	self.RemoteFunction = nil
 	
 	return self
 end
 
 
 function GIHandler:SetTweens(Tweens:{[string]:Tween})
-	-- TODO
-	self.Tweens = Tweens
 	
-	--[[
-	
-	if type(Name) == "string" then
-		self.Tweens[Name] = Tween
-	end
-	
-	]]
 end
 
-
---- @@@@ tweeens is deprechated
 function GIHandler:ConnectTweens(Tweens:Tweens, Event:BindableEvent?)
-	local Event = Event or self.Event
-	for TweenName,TweenData in Tweens do
-		
-		if not(Tweens["Tween"] and Tweens["EventName"]) then
-			warn("incorrect formating of tweendata")
-			continue
-		end
-		
-		self:ConnectTween(Tweens["Tween"], Tweens["EventName"], Event)
-	end
 	
 end
 
-function GIHandler:ConnectTween(Tween:Tween|string, EventName:string, Event:BindableEvent)
-	local Tween:Tween = assert(Tween or self.Tweens[Tween])
-	local Event:BindableEvent = Event or self.Event
-	local connection = Event.Event:Connect(function(name, self, input)
-		if name[EventName] then
-			Tween:Play()
-		end
-	end)
+function GIHandler:ConnectTween(Tween:Tween|string, EventName:string, Event:BindableEvent?)
 	
-	table.insert(self.EventConnections, Event)
 end
 
 function GIHandler:SetMetaData(data:{[string]:any})
 	self.Data = data
 end
---[[
 
-function GIHandler:FireServer(data:GuiPacket, remoteevent:RemoteEvent?)
-	local remoteevent = remoteevent or GuiRemote
-	remoteevent:FireServer(data)
+
+function GIHandler:FireServer(Data:GuiPacket, RemoteEvent:RemoteEvent?)
+	local RemoteEvent = RemoteEvent or self.RemoteEvent
+	RemoteEvent:FireServer(Data)
 end
 
-function GIHandler:InvokeServer(data:GuiPacket, remotefunction:RemoteFunction?)
-	local remotefunction = remotefunction or GuiFunction
+function GIHandler:InvokeServer(Data:GuiPacket, RemoteFunction:RemoteFunction?)
+	local RemoteEvent = RemoteFunction or self.RemoteFunction
 	local error, retn = pcall(function()
-		local retn = remotefunction:InvokeServer(data)
+		local retn = RemoteEvent:InvokeServer(Data)
 		return retn
 	end)
 
@@ -114,7 +88,6 @@ function GIHandler:InvokeServer(data:GuiPacket, remotefunction:RemoteFunction?)
 	return retn
 end
 
-]]
 
 
 function GIHandler:ClearTweens()
@@ -147,9 +120,7 @@ end
 
 -- @@@ deprechated, not done
 function GIHandler:Clone(GuiObject:GuiObject, Parent:GuiBase?)
-	local Cloned:GuiBase = GIHandler.new(GuiObject, self.Event, Parent)
-	Cloned.Data = self.Data
-	return Cloned
+
 end
 
 

@@ -1,4 +1,6 @@
 --[[
+	SChandler : ScrollingHandler, ScrollingFrameHandler
+	
 	this is used for frams that contains
 	more then one item, for example shop
 	etc
@@ -30,7 +32,6 @@ end
 function SChandler:AddItem(Name:string, StructFn:StructFn)
 	local StructFn = assert(StructFn or self.StructFn, "have to have a structfn")
 	local NewGuiBase = StructFn(self)
-	
 	
 	NewGuiBase.GuiObject.Name = Name
 	self:AddChildren(NewGuiBase)

@@ -1,4 +1,6 @@
 --[[
+	FMhandler : FrameHandler
+	
 	the same as framebase but that this inheiriting from
 	GIhanlder instead of Guibase
 ]]
